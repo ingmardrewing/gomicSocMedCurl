@@ -1,10 +1,7 @@
 package curl
 
 import (
-	"bufio"
 	"fmt"
-	"os"
-	"strings"
 
 	shared "github.com/ingmardrewing/gomicSocMedShared"
 )
@@ -47,11 +44,4 @@ func createTargetUrl() string {
 
 func createCurl(json, credentials, target string) string {
 	return fmt.Sprintf(CURL_FORMAT, json, credentials, target)
-}
-
-func askUser(prompt string) string {
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print(prompt + ": ")
-	text, _ := reader.ReadString('\n')
-	return strings.TrimSuffix(text, "\n")
 }
