@@ -16,13 +16,13 @@ type Content struct {
 }
 
 func Command(title, description, link, imgUrl, tags string) string {
-	json := createJson(title, description, link, imgUrl, tags)
+	json := Json(title, description, link, imgUrl, tags)
 	credentials := createCredentials()
 	target := createTargetUrl()
 	return createCurl(json, credentials, target)
 }
 
-func createJson(title, description, link, imgUrl, tags string) string {
+func Json(title, description, link, imgUrl, tags string) string {
 	return fmt.Sprintf(JSON_FORMAT, link, imgUrl, title, tags, description)
 }
 
