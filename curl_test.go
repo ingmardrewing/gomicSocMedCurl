@@ -16,7 +16,7 @@ func TestCreateJson(t *testing.T) {
 	description := "descriptionValue"
 
 	expected := fmt.Sprintf(JSON_FORMAT, link, imgUrl, title, tagsCsv, description)
-	actual := createJson(title, description, link, imgUrl, tagsCsv)
+	actual := Json(title, description, link, imgUrl, tagsCsv)
 
 	if actual != expected {
 		t.Error("Expected json was", expected, "but got", actual)
