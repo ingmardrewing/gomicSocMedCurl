@@ -1,25 +1,18 @@
 package curl
 
+import "math/rand"
+
 const (
 	MAX_LENGTH = 140
 )
 
-var TAGS = []string{"inked", "inking", "illustration", "drawing", "drawings", "art", "artwork", "draw", "painting", "sketch", "sketchbook", "artist", "comics", "comicart", "comic", "graphicnovel", "design", "concept", "conceptart", "create", "creative", "image", "imagination"}
+var TAGS = []string{"art", "artist", "artwork", "bandedesinée", "cartoon", "comic", "comicart", "comics", "comix", "concept", "conceptart", "create", "creative", "dessin", "design", "draw", "drawing", "drawings", "fiction", "graphicnovel", "illustration", "image", "imagination", "inked", "inking", "manga", "painting", "sketch", "sketchbook", "sequentialart", "zeichnung", "挿絵", "絵", "イラスト", "일러스트", "일러스트레이션", "アート", "マンガ", "イラストレーション", "ドローイング", "スケッチ", "ilustração", "ilustració", "peinture"}
 
-// Returns tags fitting into a tweet with
-// the given text
-func GetTagsForTwitter(txt string) []string {
-	addedTags := []string{}
-	length := len(txt) + 1
-
-	for _, tag := range TAGS {
-		future_length := length + len(tag) + 1
-		if future_length > MAX_LENGTH {
-			return addedTags
-		}
-		addedTags = append(addedTags, tag)
-		length = future_length
+func GetArtTagsInRandomOrder() []string {
+	shuffeled := make([]string, len(TAGS))
+	perm := rand.Perm(len(TAGS))
+	for i, v := range perm {
+		shuffeled[v] = TAGS[i]
 	}
-
-	return addedTags
+	return shuffeled
 }
